@@ -5,15 +5,15 @@ import source.*;
 public class WCtest {
 	@Test
 	public void line_count_should_count_no_of_lines_in_the_provided_data() {
-		String data = "hello, this table is surrounded by six people including me.\nI'm sitting between shruti and supriya";
+		String data = "hello, this table is surrounded by six people including me.\nI'm sitting between shruti and supriya\n";
 		WCsource d = new WCsource(data);
-		assertEquals(1, d.lineCount());
+		assertEquals(2, d.lineCount());
 	}
 	@Test
 	public void line_count_should_give_zero_if_there_are_no_lines_in_gicen_data() {
 		String data = "hello world";
 		WCsource d = new WCsource(data);
-		assertEquals(0, d.lineCount());
+		assertEquals(1, d.lineCount());
 	}
 	@Test
 	public void word_count_should_give_no_of_words_in_given_data() {

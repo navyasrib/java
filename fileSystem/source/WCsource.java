@@ -8,7 +8,7 @@ public class WCsource {
 	}
 
 	public int lineCount() {
-		return data.split("\n").length-1;
+		return data.split("\n").length;
 	}
 
 	public int wordCount() {
