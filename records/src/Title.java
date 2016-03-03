@@ -5,7 +5,8 @@ public class Title {
     public Title() {}
 
     public String prefix(String gender) {
-        if(Objects.equals(gender, "M"))
+        gender = gender.toUpperCase();
+        if(Objects.equals(gender, "MALE"))
             return "Mr";
         return "Ms";
     }

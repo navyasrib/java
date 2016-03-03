@@ -8,4 +8,8 @@ public class Address {
         this.state = s;
         this.country = ct;
     }
+
+    public String getCountry() {
+        return country;
+    }
 }
