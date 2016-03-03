@@ -1,15 +1,13 @@
 import java.util.NoSuchElementException;
 
-public class LinkedList<type> implements Iterator {
+public class LinkedList<type> {
     private int length;
     private Ele head;
     private Ele tail;
-    private int iteratorIndex;
 
 
     public LinkedList() {
         this.length = 0;
-        this.iteratorIndex = 0;
     }
 
     public void add(type ele) {
@@ -50,37 +48,15 @@ public class LinkedList<type> implements Iterator {
         throw new NoSuchElementException("Element not found");
     }
 
-    @Override
-    public boolean hasNext() {
-        boolean result = this.iteratorIndex < this.length;
-        this.iteratorIndex++;
-        return result;
-    }
-
-    @Override
-    public Object next() {
-        return this.findAt(iteratorIndex-1);
-    }
-
-    @Override
-    public void remove() {
-        Ele previousElement = this.getHead();
-        Ele currentElement;
-        if (this.iteratorIndex == 0)
-            this.head = previousElement.getNext();
-        else
-            for (int i = 0; i < this.iteratorIndex; i++) {
-                if (this.iteratorIndex - 1 == i)
-                    break;
-                previousElement = previousElement.getNext();
-            }
-        currentElement = previousElement.getNext();
-        previousElement.next(currentElement.getNext());
-        currentElement.getNext().previous(previousElement);
-        this.length--;
-    }
-
     public Iterator Iterator() {
-        return this;
+        return new Iterator<type>(this);
+    }
+
+    public void moveHead(Ele next) {
+        this.head = next;
+    }
+
+    public void decrementLength() {
+        this.length--;
     }
 }

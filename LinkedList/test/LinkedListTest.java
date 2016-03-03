@@ -124,9 +124,7 @@ public class LinkedListTest {
         l.add("hello");
         l.add("world");
         Iterator itr = l.Iterator();
-        itr.hasNext();
         assertEquals("hello", itr.next());
-        itr.hasNext();
         assertEquals("world", itr.next());
     }
 
@@ -136,11 +134,8 @@ public class LinkedListTest {
         l.add("hello");
         l.add("world");
         Iterator itr = l.Iterator();
-        itr.hasNext();
         assertEquals("hello", itr.next());
-        itr.hasNext();
         assertEquals("world", itr.next());
-        itr.hasNext();
         try {
             assertEquals("", itr.next());
         } catch (NoSuchElementException e) {
@@ -155,7 +150,7 @@ public class LinkedListTest {
         l.add("b");
         l.add("c");
         Iterator itr = l.Iterator();
-        itr.hasNext();
+        itr.next();
         itr.remove();
         assertEquals("a", l.findAt(0));
         assertEquals("c", l.findAt(1));
