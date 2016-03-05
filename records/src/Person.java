@@ -3,11 +3,12 @@ public class Person {
     private final String firstName;
     private final String lastName;
     private final String gender;
-    private final int age;
+    private final String age;
     private final Address address;
     private String title;
+    private String lastFirstName;
 
-    public Person(String first, String last, String gen, int age, String city, String state, String country) {
+    public Person(String first, String last, String gen, String age, String city, String state, String country) {
         this.firstName = first;
         this.lastName = last;
         this.gender = gen;
@@ -34,5 +35,23 @@ public class Person {
 
     public Address getAddress() {
         return address;
+    }
+
+    public String getFirstLastName() {
+        NameRepresentationPrefix n = new NameRepresentationPrefix();
+        return n.getName(this);
+    }
+
+    public String getFormalNameWithCountry(Person next) {
+        return next.getFirstLastName()+", "+next.address.getCountry();
+    }
+
+    public String getLastFirstName() {
+        NameRepresentationSufix n = new NameRepresentationSufix();
+        return n.getName(this);
+    }
+
+    public String getCasualNameWithCountry(Person next) {
+        return next.getLastFirstName()+", "+next.address.getCountry();
     }
 }
