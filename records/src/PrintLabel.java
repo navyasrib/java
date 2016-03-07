@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 public class PrintLabel {
 
+    HashMap<String, String> userOptions = new HashMap<>();
+
     public PrintLabel() {
     }
 
@@ -18,24 +20,30 @@ public class PrintLabel {
         return data;
     }
 
-    private static String LastFirst(Orderize o) {
-        return o.getLastFirstNames();
+
+    public void getAllFunctions(Orderize o) {
+        userOptions.put("lastFirst", "Names of all guests in last name first format:\n" + o.getLastFirstNames());
+        userOptions.put("firstLast", "Names of all guests in first name first format:\n" + o.getFitstLastNames());
     }
 
-    public HashMap<String, String> getAllFunctions(Orderize o) {
-        HashMap<String, String> functions = new HashMap<>();
-        functions.put("lastFirst", LastFirst(o));
-        return functions;
+    public void getAllFunctions(Orderize o, String countryName) {
+        userOptions.put("getCountry", o.getGuestsByCountry(countryName));
     }
+
 
     public static void main(String[] args) throws Exception {
-        String data = readFile(args[1]);
-        Orderize o = new Orderize();
-        o.createPerson(data);
+        String data, option, countryName = null;
+        option = args[0].substring(2);
         PrintLabel p = new PrintLabel();
-        String functionName = args[0].substring(2);
-        HashMap<String, String> functionallities = p.getAllFunctions(o);
-        String result = functionallities.get(functionName);
-        System.out.println("Names of all guests in last name first format:\n" + result);
+        Orderize o = new Orderize();
+        countryName = (args.length>2)? args[1] : "";
+        data = (args.length>2)? readFile(args[2]) : readFile(args[1]);
+        o.createPerson(data);
+        p.getAllFunctions(o);
+        String result = p.userOptions.get(option);
+        p.getAllFunctions(o,countryName);
+        result = p.userOptions.get(option);
+        System.out.println(result);
+
     }
 }

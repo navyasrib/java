@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Orderize {
@@ -23,7 +22,6 @@ public class Orderize {
 
     public String getFitstLastNames() {
         String allNames = "";
-        Iterator itr = allGuests.iterator();
         for (Person guest : allGuests) {
             allNames += guest.getFirstLastName();
             allNames += "\n";
@@ -33,12 +31,27 @@ public class Orderize {
 
     public String getLastFirstNames() {
         String allNames = "";
-        Iterator itr = allGuests.iterator();
         for (Person guest : allGuests) {
             allNames += guest.getLastFirstName();
             allNames += "\n";
         }
         return allNames;
     }
+
+    public List<Person> getByCountry(String countryName) {
+        SortByAddress s = new SortByAddress();
+        return s.getListBy((ArrayList<Person>) allGuests,countryName);
+    }
+
+    public String getGuestsByCountry(String country) {
+        String allNames = "";
+        List<Person> sortedByCountry = getByCountry(country);
+        for (Person guest : sortedByCountry) {
+            allNames +=  guest.getFormalNameWithCountry();
+            allNames += "\n";
+        }
+        return allNames;
+    }
+
 }
 

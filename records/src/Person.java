@@ -42,8 +42,8 @@ public class Person {
         return n.getName(this);
     }
 
-    public String getFormalNameWithCountry(Person next) {
-        return next.getFirstLastName()+", "+next.address.getCountry();
+    public String getFormalNameWithCountry() {
+        return this.getFirstLastName()+", "+this.address.getCountry();
     }
 
     public String getLastFirstName() {
@@ -51,7 +51,11 @@ public class Person {
         return n.getName(this);
     }
 
-    public String getCasualNameWithCountry(Person next) {
-        return next.getLastFirstName()+", "+next.address.getCountry();
+    public String getCasualNameWithCountry() {
+        return this.getLastFirstName()+", "+this.address.getCountry();
+    }
+
+    public String toString(){
+        return firstName+","+lastName+","+gender+","+age+","+address.toString();
     }
 }

@@ -12,7 +12,7 @@ public class OrderizeTest {
                 "Gavin,Hyatt,Male,36,Crooks ton,Illinois,Romania\n";
         Orderize o = new Orderize();
         List list = o.createPerson(data);
-        assertEquals(3,list.size());
+        assertEquals(3, list.size());
     }
 
     @Test
@@ -25,7 +25,7 @@ public class OrderizeTest {
         String names = o.getFitstLastNames();
         assertEquals("Ms Julius Barrows\n" +
                 "Ms Melody Dooley\n" +
-                "Mr Gavin Hyatt\n",names);
+                "Mr Gavin Hyatt\n", names);
     }
 
     @Test
@@ -38,6 +38,29 @@ public class OrderizeTest {
         String names = o.getLastFirstNames();
         assertEquals("Ms Barrows, Julius\n" +
                 "Ms Dooley, Melody\n" +
-                "Mr Hyatt, Gavin\n",names);
+                "Mr Hyatt, Gavin\n", names);
+    }
+
+    @Test
+    public void testGetByCountry() throws Exception {
+        String data = "Julius,Barrows,Female,18,Veda haven,Vermont,Macedonia\n" +
+                "Melody,Dooley,Female,31,West Shanna,Vermont,Bangladesh\n" +
+                "Gavin,Hyatt,Male,36,Crooks ton,Illinois,Bangladesh\n";
+        Orderize o = new Orderize();
+        o.createPerson(data);
+        List names = o.getByCountry("Bangladesh");
+        assertEquals("Melody,Dooley,Female,31,West Shanna,Vermont,Bangladesh", names.get(0).toString());
+    }
+
+    @Test
+    public void testGuestsGetByCountry() throws Exception {
+        String data = "Julius,Barrows,Female,18,Veda haven,Vermont,Macedonia\n" +
+                "Melody,Dooley,Female,31,West Shanna,Vermont,Bangladesh\n" +
+                "Gavin,Hyatt,Male,36,Crooks ton,Illinois,Bangladesh\n";
+        Orderize o = new Orderize();
+        o.createPerson(data);
+        String names = o.getGuestsByCountry("Bangladesh");
+        assertEquals("Ms Melody Dooley, Bangladesh\n" +
+                "Mr Gavin Hyatt, Bangladesh\n",names);
     }
 }

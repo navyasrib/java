@@ -33,10 +33,10 @@ public class NameRepresentationSufixTest {
         SortByAddress n = new SortByAddress();
         ArrayList<Person> selectedList = n.getListBy(personsList, "India");
         Iterator iterator = selectedList.iterator();
-        assertEquals("Ms Metla, RadhaKrishna, India", p.getCasualNameWithCountry((Person) iterator.next()));
-        assertEquals("Mr Gonne, Harsha, India", p.getCasualNameWithCountry((Person) iterator.next()));
+        assertEquals("Ms Metla, RadhaKrishna, India", ((Person) iterator.next()).getCasualNameWithCountry());
+        assertEquals("Mr Gonne, Harsha, India", ((Person) iterator.next()).getCasualNameWithCountry());
         try {
-            assertEquals("", p.getCasualNameWithCountry((Person) iterator.next()));
+            assertEquals("", ((Person) iterator.next()).getCasualNameWithCountry());
         } catch (NoSuchElementException e) {
             assertEquals(null, e.getMessage());
         }
