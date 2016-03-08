@@ -21,12 +21,12 @@ public class PrintLabel {
     }
 
 
-    public void getAllFunctions(Orderize o) {
+    public void getAllFunctions(Invitees o) {
         userOptions.put("lastFirst", "Names of all guests in last name first format:\n" + o.getLastFirstNames());
         userOptions.put("firstLast", "Names of all guests in first name first format:\n" + o.getFitstLastNames());
     }
 
-    public void getAllFunctions(Orderize o, String countryName) {
+    public void getAllFunctions(Invitees o, String countryName) {
         userOptions.put("firstCountry", "Guests from "+countryName+" are:\n"+o.getGuestsFirstLastCountry(countryName));
         userOptions.put("lastCountry", "Guests from "+countryName+" are:\n"+o.getGuestsByLastFirstCountry(countryName));
     }
@@ -36,7 +36,7 @@ public class PrintLabel {
         String data, option, countryName = "";
         option = args[0].substring(2);
         PrintLabel p = new PrintLabel();
-        Orderize o = new Orderize();
+        Invitees o = new Invitees();
         if(args.length>2){
             countryName = args[1];
             data = readFile(args[2]);

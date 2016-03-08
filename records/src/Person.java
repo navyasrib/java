@@ -41,7 +41,7 @@ public class Person {
     }
 
     public String getFirstLastName() {
-        NameRepresentationPrefix n = new NameRepresentationPrefix();
+        NameRepresentatorP n = new NameRepresentatorP();
         return n.getName(this);
     }
 
@@ -50,7 +50,7 @@ public class Person {
     }
 
     public String getLastFirstName() {
-        NameRepresentationSufix n = new NameRepresentationSufix();
+        NameRepresentatorS n = new NameRepresentatorS();
         return n.getName(this);
     }
 

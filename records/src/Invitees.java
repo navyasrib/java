@@ -1,23 +1,21 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Orderize {
+public class Invitees {
 
     private List<Person> allGuests;
 
-    public Orderize() {
+    public Invitees() {
+        allGuests = new ArrayList<>();
     }
 
-    public List createPerson(String data) {
+    public void createPerson(String data) {
         String[] list = data.split("\n");
-        List<Person> totalList = new ArrayList<>();
         for (String aList : list) {
             String[] details = aList.split(",");
             Person p = new Person(details[0], details[1], details[2], details[3], details[4], details[5], details[6]);
-            totalList.add(p);
+            allGuests.add(p);
         }
-        this.allGuests = totalList;
-        return totalList;
     }
 
     public String getFitstLastNames() {
@@ -40,7 +38,7 @@ public class Orderize {
 
     public List<Person> getByCountry(String countryName) {
         FilterBy s = new FilterBy();
-        return s.getListByCountry((ArrayList<Person>) allGuests,countryName);
+        return s.getListByCountry( allGuests,countryName);
     }
 
     public String getGuestsFirstLastCountry(String country) {
