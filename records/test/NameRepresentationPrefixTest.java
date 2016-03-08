@@ -2,6 +2,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertEquals;
@@ -30,8 +31,8 @@ public class NameRepresentationPrefixTest {
         personsList.add(p);
         personsList.add(p1);
         personsList.add(p2);
-        SortByAddress n = new SortByAddress();
-        ArrayList <Person> selectedList = n.getListBy(personsList,"India");
+        FilterBy n = new FilterBy();
+        List<Person> selectedList = n.getListByCountry(personsList,"India");
         Iterator iterator = selectedList.iterator();
         assertEquals("Ms RadhaKrishna Metla, India",((Person) iterator.next()).getFormalNameWithCountry());
         assertEquals("Mr Harsha Gonne, India",((Person) iterator.next()).getFormalNameWithCountry());

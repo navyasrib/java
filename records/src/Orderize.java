@@ -39,15 +39,25 @@ public class Orderize {
     }
 
     public List<Person> getByCountry(String countryName) {
-        SortByAddress s = new SortByAddress();
-        return s.getListBy((ArrayList<Person>) allGuests,countryName);
+        FilterBy s = new FilterBy();
+        return s.getListByCountry((ArrayList<Person>) allGuests,countryName);
     }
 
-    public String getGuestsByCountry(String country) {
+    public String getGuestsFirstLastCountry(String country) {
         String allNames = "";
         List<Person> sortedByCountry = getByCountry(country);
         for (Person guest : sortedByCountry) {
             allNames +=  guest.getFormalNameWithCountry();
+            allNames += "\n";
+        }
+        return allNames;
+    }
+
+    public String getGuestsByLastFirstCountry(String country) {
+        String allNames = "";
+        List<Person> sortedByCountry = getByCountry(country);
+        for (Person guest : sortedByCountry) {
+            allNames +=  guest.getCasualNameWithCountry();
             allNames += "\n";
         }
         return allNames;

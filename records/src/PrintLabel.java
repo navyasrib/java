@@ -27,7 +27,8 @@ public class PrintLabel {
     }
 
     public void getAllFunctions(Orderize o, String countryName) {
-        userOptions.put("firstCountry", o.getGuestsByCountry(countryName));
+        userOptions.put("firstCountry", "Guests from "+countryName+" are:\n"+o.getGuestsFirstLastCountry(countryName));
+        userOptions.put("lastCountry", "Guests from "+countryName+" are:\n"+o.getGuestsByLastFirstCountry(countryName));
     }
 
 

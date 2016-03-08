@@ -32,6 +32,10 @@ public class Person {
         return this.lastName;
     }
 
+    public String getAge() {
+        return age;
+    }
+
     public Address getAddress() {
         return address;
     }
@@ -57,4 +61,5 @@ public class Person {
     public String toString(){
         return firstName+","+lastName+","+gender+","+age+","+address.toString();
     }
+
 }

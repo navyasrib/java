@@ -59,8 +59,21 @@ public class OrderizeTest {
                 "Gavin,Hyatt,Male,36,Crooks ton,Illinois,Bangladesh\n";
         Orderize o = new Orderize();
         o.createPerson(data);
-        String names = o.getGuestsByCountry("Bangladesh");
+        String names = o.getGuestsFirstLastCountry("Bangladesh");
         assertEquals("Ms Melody Dooley, Bangladesh\n" +
                 "Mr Gavin Hyatt, Bangladesh\n",names);
     }
+
+    @Test
+    public void testGuestsGetByCountryCasual() throws Exception {
+        String data = "Julius,Barrows,Female,18,Veda haven,Vermont,Macedonia\n" +
+                "Melody,Dooley,Female,31,West Shanna,Vermont,Bangladesh\n" +
+                "Gavin,Hyatt,Male,36,Crooks ton,Illinois,Bangladesh\n";
+        Orderize o = new Orderize();
+        o.createPerson(data);
+        String names = o.getGuestsByLastFirstCountry("Bangladesh");
+        assertEquals("Ms Dooley, Melody, Bangladesh\n" +
+                "Mr Hyatt, Gavin, Bangladesh\n",names);
+    }
+
 }
