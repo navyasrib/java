@@ -27,23 +27,24 @@ public class PrintLabel {
     }
 
     public void getAllFunctions(Orderize o, String countryName) {
-        userOptions.put("getCountry", o.getGuestsByCountry(countryName));
+        userOptions.put("firstCountry", o.getGuestsByCountry(countryName));
     }
 
 
     public static void main(String[] args) throws Exception {
-        String data, option, countryName = null;
+        String data, option, countryName = "";
         option = args[0].substring(2);
         PrintLabel p = new PrintLabel();
         Orderize o = new Orderize();
-        countryName = (args.length>2)? args[1] : "";
-        data = (args.length>2)? readFile(args[2]) : readFile(args[1]);
+        if(args.length>2){
+            countryName = args[1];
+            data = readFile(args[2]);
+        }else
+            data = readFile(args[1]);
         o.createPerson(data);
         p.getAllFunctions(o);
-        String result = p.userOptions.get(option);
         p.getAllFunctions(o,countryName);
-        result = p.userOptions.get(option);
+        String result = p.userOptions.get(option);
         System.out.println(result);
-
     }
 }

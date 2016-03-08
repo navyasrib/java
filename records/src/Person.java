@@ -6,7 +6,6 @@ public class Person {
     private final String age;
     private final Address address;
     private String title;
-    private String lastFirstName;
 
     public Person(String first, String last, String gen, String age, String city, String state, String country) {
         this.firstName = first;
