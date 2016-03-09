@@ -10,4 +10,8 @@ public class Age {
     public int getAge() {
         return age;
     }
+
+    public boolean isGreaterThan(int a) {
+        return this.age>=a;
+    }
 }

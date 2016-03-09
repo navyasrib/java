@@ -16,8 +16,8 @@ public class Person {
         this.title = gender.title();
     }
 
-    public int getAge() {
-        return age.getAge();
+    public Age getAge() {
+        return age;
     }
 
     public Address getAddress() {

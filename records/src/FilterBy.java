@@ -1,3 +1,5 @@
+import personDetails.Age;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,8 @@ public class FilterBy {
     public List<Person> getByAge(List<Person> list) {
         List<Person> filteredList = new ArrayList<>();
         for (Person p : list) {
-            if (p.getAge() >= 20)
+            Age age = p.getAge();
+            if (age.isGreaterThan(20))
                 filteredList.add(p);
         }
         return filteredList;
