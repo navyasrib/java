@@ -1,3 +1,5 @@
+import personDetails.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +15,19 @@ public class Invitees {
         String[] list = data.split("\n");
         for (String aList : list) {
             String[] details = aList.split(",");
-            Person p = new Person(details[0], details[1], details[2], details[3], details[4], details[5], details[6]);
-            allGuests.add(p);
+            allGuests.add(getPerson(details));
         }
+    }
+
+    private Person getPerson(String[] details) {
+        Name name = new Name(details[0],details[1]);
+        Gender gender = new Gender(details[2]);
+        Age age = new Age(Integer.parseInt(details[3]));
+        City city = new City(details[4]);
+        State state = new State(details[5]);
+        Country country = new Country(details[6]);
+        Address address = new Address(city,state,country);
+        return new Person(name,gender,age,address);
     }
 
     public String getFitstLastNames() {
@@ -45,7 +57,7 @@ public class Invitees {
         String allNames = "";
         List<Person> sortedByCountry = getByCountry(country);
         for (Person guest : sortedByCountry) {
-            allNames +=  guest.getFormalNameWithCountry();
+            allNames +=  guest.getFirstLastNameWithCountry();
             allNames += "\n";
         }
         return allNames;
@@ -55,11 +67,10 @@ public class Invitees {
         String allNames = "";
         List<Person> sortedByCountry = getByCountry(country);
         for (Person guest : sortedByCountry) {
-            allNames +=  guest.getCasualNameWithCountry();
+            allNames +=  guest.getLastFirstNameWithCountry();
             allNames += "\n";
         }
         return allNames;
     }
-
 }
 
