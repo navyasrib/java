@@ -1,12 +1,13 @@
 import org.junit.Test;
+import personDetails.Name;
 
 import static org.junit.Assert.assertEquals;
 
 public class NameRepresentatorPTest {
     @Test
     public void testGetNameRepresentsNameInFirstLastFormat() throws Exception {
-        Person p = new Person("navya", "basava", "female", "18", "vijayawada", "Andhra Pradesh", "India");
+        Name name = new Name("Navya","Basava");
         NameRepresentatorP n = new NameRepresentatorP();
-        assertEquals("Ms navya basava",n.getName(p));
+        assertEquals("Navya Basava",n.getName(name));
     }
 }

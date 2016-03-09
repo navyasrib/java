@@ -1,4 +1,5 @@
 import org.junit.Test;
+import personDetails.Name;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,8 +7,8 @@ public class NameRepresentatorSTest {
 
     @Test
     public void testGetNameRepresentsNameInLastFirstFormat() throws Exception {
-        Person p = new Person("navya", "basava", "female", "18", "vijayawada", "Andhra Pradesh", "India");
+        Name name = new Name("Navya", "Basava");
         NameRepresentatorS n = new NameRepresentatorS();
-        assertEquals("Ms basava, navya",n.getName(p));
+        assertEquals("Basava, Navya",n.getName(name));
     }
 }

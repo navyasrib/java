@@ -1,9 +1,11 @@
+import personDetails.Name;
+
 public class NameRepresentatorP {
 
     public NameRepresentatorP() {
     }
 
-    public String getName(Person p) {
-        return p.getTitle() + " " + p.getFirstName() + " " + p.getLastName();
+    public String getName(Name name) {
+        return name.getFirstName() + " " + name.getLastName();
     }
 }

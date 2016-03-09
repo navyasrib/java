@@ -9,17 +9,16 @@ public class FilterBy {
         country = country.toUpperCase();
         List<Person> filteredList = new ArrayList<>();
         for (Person p : list) {
-            String personCountry = p.getAddress().getCountry().toUpperCase();
-            if (personCountry.equals(country))
+            if (p.getAddress().getCountry().isSameAs(country))
                 filteredList.add(p);
         }
         return filteredList;
     }
 
-    public List<Person> getByAge(List<Person> list){
+    public List<Person> getByAge(List<Person> list) {
         List<Person> filteredList = new ArrayList<>();
-        for(Person p : list){
-            if(Integer.parseInt(p.getAge()) >= 20)
+        for (Person p : list) {
+            if (p.getAge() >= 20)
                 filteredList.add(p);
         }
         return filteredList;

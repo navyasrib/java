@@ -1,39 +1,23 @@
+import personDetails.*;
+
 public class Person {
 
-    private final String firstName;
-    private final String lastName;
-    private final String gender;
-    private final String age;
+    private final Gender gender;
+    private final Age age;
     private final Address address;
-    private String title;
+    private final Name name;
+    private final String title;
 
-    public Person(String first, String last, String gen, String age, String city, String state, String country) {
-        this.firstName = first;
-        this.lastName = last;
-        this.gender = gen;
+    public Person(Name name, Gender gender, Age age, Address address) {
+        this.name = name;
+        this.gender = gender;
         this.age = age;
-        this.address = new Address(city,state,country);
+        this.address = address;
+        this.title = gender.title();
     }
 
-    private void assignTitle(){
-        Title t = new Title();
-        this.title = t.prefix(gender);
-    }
-    public String getTitle() {
-        this.assignTitle();
-        return this.title;
-    }
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public String getLastName() {
-        return this.lastName;
-    }
-
-    public String getAge() {
-        return age;
+    public int getAge() {
+        return age.getAge();
     }
 
     public Address getAddress() {
@@ -42,24 +26,24 @@ public class Person {
 
     public String getFirstLastName() {
         NameRepresentatorP n = new NameRepresentatorP();
-        return n.getName(this);
+        return this.title + " " + n.getName(name);
     }
 
-    public String getFormalNameWithCountry() {
-        return this.getFirstLastName()+", "+this.address.getCountry();
+    public String getFirstLastNameWithCountry() {
+        return this.getFirstLastName() + ", " + this.address.getCountry();
     }
 
     public String getLastFirstName() {
         NameRepresentatorS n = new NameRepresentatorS();
-        return n.getName(this);
+        return this.title + " " + n.getName(name);
     }
 
-    public String getCasualNameWithCountry() {
-        return this.getLastFirstName()+", "+this.address.getCountry();
+    public String getLastFirstNameWithCountry() {
+        return this.getLastFirstName() + ", " + this.address.getCountry();
     }
 
-    public String toString(){
-        return firstName+","+lastName+","+gender+","+age+","+address.toString();
+    public String toString() {
+        return name + "," + gender + "," + age.getAge() + "," + address.toString();
     }
 
 }
