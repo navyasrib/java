@@ -20,14 +20,14 @@ public class Invitees {
     }
 
     private Person getPerson(String[] details) {
-        Name name = new Name(details[0],details[1]);
+        Name name = new Name(details[0], details[1]);
         Gender gender = new Gender(details[2]);
         Age age = new Age(Integer.parseInt(details[3]));
         City city = new City(details[4]);
         State state = new State(details[5]);
         Country country = new Country(details[6]);
-        Address address = new Address(city,state,country);
-        return new Person(name,gender,age,address);
+        Address address = new Address(city, state, country);
+        return new Person(name, gender, age, address);
     }
 
     public String getFitstLastNames() {
@@ -50,14 +50,14 @@ public class Invitees {
 
     public List<Person> getByCountry(String countryName) {
         FilterBy s = new FilterBy();
-        return s.getListByCountry( allGuests,countryName);
+        return s.getListByCountry(allGuests, countryName);
     }
 
     public String getGuestsFirstLastCountry(String country) {
         String allNames = "";
         List<Person> sortedByCountry = getByCountry(country);
         for (Person guest : sortedByCountry) {
-            allNames +=  guest.getFirstLastNameWithCountry();
+            allNames += guest.getFirstLastNameWithCountry();
             allNames += "\n";
         }
         return allNames;
@@ -67,7 +67,7 @@ public class Invitees {
         String allNames = "";
         List<Person> sortedByCountry = getByCountry(country);
         for (Person guest : sortedByCountry) {
-            allNames +=  guest.getLastFirstNameWithCountry();
+            allNames += guest.getLastFirstNameWithCountry();
             allNames += "\n";
         }
         return allNames;

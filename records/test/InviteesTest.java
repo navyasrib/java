@@ -53,7 +53,7 @@ public class InviteesTest {
         o.createPerson(data1);
         String names = o.getGuestsFirstLastCountry("Bangladesh");
         assertEquals("Ms Melody Dooley, Bangladesh\n" +
-                "Mr Gavin Hyatt, Bangladesh\n",names);
+                "Mr Gavin Hyatt, Bangladesh\n", names);
     }
 
     @Test
@@ -62,7 +62,6 @@ public class InviteesTest {
         o.createPerson(data1);
         String names = o.getGuestsByLastFirstCountry("Bangladesh");
         assertEquals("Ms Dooley, Melody, Bangladesh\n" +
-                "Mr Hyatt, Gavin, Bangladesh\n",names);
+                "Mr Hyatt, Gavin, Bangladesh\n", names);
     }
-
 }
