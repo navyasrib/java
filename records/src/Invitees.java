@@ -1,3 +1,4 @@
+import guest.Person;
 import personDetails.*;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class Invitees {
 
     public String getGuestsFirstLastCountry(String country) {
         String allNames = "";
-        List<Person> sortedByCountry = getByCountry(country);
+        List<Person> sortedByCountry = this.getByCountry(country);
         for (Person guest : sortedByCountry) {
             allNames += guest.getFirstLastNameWithCountry();
             allNames += "\n";

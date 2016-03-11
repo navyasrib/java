@@ -1,3 +1,5 @@
+package guest;
+
 import personDetails.Name;
 
 public class NameRepresentatorS {

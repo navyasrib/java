@@ -7,11 +7,11 @@ public class Age {
         this.age = age;
     }
 
-    public int getAge() {
-        return age;
-    }
-
     public boolean isGreaterThan(int a) {
         return this.age>=a;
+    }
+
+    public String toString(){
+        return String.valueOf(this.age);
     }
 }
