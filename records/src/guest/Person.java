@@ -55,6 +55,18 @@ public class Person {
         return this.getLastFirstNameWithCountry() + ", " + this.age;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public String getFirstName() {
+        return name.getFirstName();
+    }
+
+    public String getLastName() {
+        return name.getLastName();
+    }
+
     public static class NameRepresentatorP {
 
         public NameRepresentatorP() {

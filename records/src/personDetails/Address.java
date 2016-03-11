@@ -18,4 +18,12 @@ public class Address {
     public Country getCountry() {
         return country;
     }
+
+    public City getCity() {
+        return city;
+    }
+
+    public State getState() {
+        return state;
+    }
 }
