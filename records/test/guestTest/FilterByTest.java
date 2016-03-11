@@ -1,3 +1,7 @@
+package guestTest;
+
+import guest.FilterBy;
+import guest.Guests;
 import guest.Person;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,8 +41,8 @@ public class FilterByTest {
         country = new Country("Russia");
         address = new Address(city,state,country);
         list.add(new Person(name,gender,age,address));
-        List<Person> result = f.getListByCountry(list,"India");
-        assertEquals(2,result.size());
+        Guests result = f.getListByCountry(list,"India");
+        assertEquals(2,result.getAllguests().size());
     }
 
     @Test
@@ -51,7 +55,7 @@ public class FilterByTest {
         list.add(new Person(name,gender,age,address));
         age = new Age(25);
         list.add(new Person(name,gender,age,address));
-        List<Person> result = f.getByAge(list);
-        assertEquals(2,result.size());
+        Guests result = f.getByAge(list,20);
+        assertEquals(2,result.getAllguests().size());
     }
 }

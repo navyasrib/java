@@ -1,4 +1,5 @@
 package guest;
+
 import personDetails.*;
 
 public class Person {
@@ -25,36 +26,6 @@ public class Person {
         return address;
     }
 
-    public String getFirstLastName() {
-        NameRepresentatorP n = new NameRepresentatorP();
-        return this.title + " " + n.getName(name);
-    }
-
-    public String getFirstLastNameWithCountry() {
-        return this.getFirstLastName() + ", " + this.address.getCountry();
-    }
-
-    public String getLastFirstName() {
-        NameRepresentatorS n = new NameRepresentatorS();
-        return this.title + " " + n.getName(name);
-    }
-
-    public String getLastFirstNameWithCountry() {
-        return this.getLastFirstName() + ", " + this.address.getCountry();
-    }
-
-    public String toString() {
-        return name + "," + gender + "," + age + "," + address.toString();
-    }
-
-    public String getAgeCountryFirstLast() {
-        return this.getFirstLastNameWithCountry() + ", " + this.age;
-    }
-
-    public String getAgeCountryLastFirst() {
-        return this.getLastFirstNameWithCountry() + ", " + this.age;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -67,13 +38,7 @@ public class Person {
         return name.getLastName();
     }
 
-    public static class NameRepresentatorP {
-
-        public NameRepresentatorP() {
-        }
-
-        public String getName(Name name) {
-            return name.getFirstName() + " " + name.getLastName();
-        }
+    public String toString() {
+        return name + "," + gender + "," + age + "," + address.toString();
     }
 }
