@@ -1,8 +1,12 @@
+import com.sun.deploy.util.StringUtils;
+import design.Template;
+import guest.GuestTemplate;
 import guest.Guests;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.HashMap;
+import java.util.List;
 
 public class PrintLabel {
 
@@ -21,13 +25,11 @@ public class PrintLabel {
     }
 
     public static void main(String[] args) throws Exception {
-        String data, option, countryName = "";
-        option = args[0].substring(2);
-        PrintLabel p = new PrintLabel();
-        if(args.length>2){
-            countryName = args[1];
-            data = readFile(args[2]);
-        }else
-            data = readFile(args[1]);
+        String data = readFile(args[0]);
+        Guests guests = Guests.parseGuests(data);
+        GuestTemplate guestTemplate = new GuestTemplate(guests, new Template("title FirstNmae LastName\ncity, state\ncountry"));
+        List<String> result = guestTemplate.getGuestsWithBorder();
+        String output = StringUtils.join(result,"\n");
+        System.out.println(output);
     }
 }
