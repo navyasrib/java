@@ -81,6 +81,6 @@ public class TemplateTest {
                     "|-------------------|\n" +
                     "| kungon, Meghalaya |\n" +
                     "| India             |\n" +
-                    "+-------------------+",template.getWithBorder(person));
+                    "+-------------------+",template.getWithBorder(person).toString());
     }
 }

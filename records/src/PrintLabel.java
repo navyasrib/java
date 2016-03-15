@@ -1,11 +1,9 @@
-import com.sun.deploy.util.StringUtils;
 import design.Template;
 import guest.GuestTemplate;
 import guest.Guests;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.HashMap;
 import java.util.List;
 
 public class PrintLabel {
@@ -27,9 +25,12 @@ public class PrintLabel {
     public static void main(String[] args) throws Exception {
         String data = readFile(args[0]);
         Guests guests = Guests.parseGuests(data);
-        GuestTemplate guestTemplate = new GuestTemplate(guests, new Template("title FirstNmae LastName\ncity, state\ncountry"));
-        List<String> result = guestTemplate.getGuestsWithBorder();
-        String output = StringUtils.join(result,"\n");
+        GuestTemplate guestTemplate = new GuestTemplate(guests, new Template("title FirstName LastName\ncity, state\ncountry"));
+        List<StringBuilder> result = guestTemplate.getGuestsWithBorder();
+        String output = "";
+        for (StringBuilder s : result) {
+            output+=s+"\n";
+        }
         System.out.println(output);
     }
 }

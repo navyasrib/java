@@ -7,7 +7,6 @@ import java.util.HashMap;
 public class Template {
     private final BorderRepresentation border;
     private final String template;
-    private String allDetails;
 
     public Template(String template) {
         this.template = template;
@@ -27,7 +26,7 @@ public class Template {
         return model;
     }
 
-    public String getWithBorder(Person person) {
+    public StringBuilder getWithBorder(Person person) {
         String modeledData = generate(person);
         String[] model = modeledData.split("\n");
         HashMap<String,String> lines = new HashMap<>();

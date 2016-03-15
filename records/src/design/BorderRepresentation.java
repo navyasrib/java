@@ -15,32 +15,26 @@ public class BorderRepresentation {
         this.vertical    = vertical ;
     }
 
-    public String generate(HashMap<String, String> lines) {
+    public StringBuilder generate(HashMap<String, String> lines) {
         findMaxLength(lines);
-        String top = generateTopLine();
-        String firstLine = getData(lines.get("first"));
-        String middle = generateMiddleLine();
-        String secondLine = getData(lines.get("second"));
-        String thirdLine = getData(lines.get("third"));
-        return String.format("%s\n%s\n%s\n%s\n%s\n%s",top,firstLine,middle,secondLine,thirdLine,top);
-    }
-
-    private String generateMiddleLine() {
-        String result = "";
-        result = result.concat(vertical);
-        result = result.concat(getLine(horizontal,length));
-        result = result.concat(vertical);
+        StringBuilder top = generateTopLine();
+        StringBuilder firstLine = getData(lines.get("first"));
+        StringBuilder middle = generateMiddleLine();
+        StringBuilder secondLine = getData(lines.get("second"));
+        StringBuilder thirdLine = getData(lines.get("third"));
+        StringBuilder result = new StringBuilder();
+        result.append(top).append("\n").append(firstLine).append("\n").append(middle).append("\n").append(secondLine).append("\n").append(thirdLine).append("\n").append(top);
         return result;
     }
 
-    private String getData(String first) {
-        String result = "";
-        result = result.concat(vertical);
-        result = result.concat(" ");
-        result = result.concat(first);
-        result = result.concat(getLine(" ",length-result.length()+1));
-        result = result.concat(vertical);
-        return result;
+    private StringBuilder generateMiddleLine() {
+        StringBuilder result = new StringBuilder();
+        return result.append(vertical).append(getLine(horizontal,length)).append(vertical);
+    }
+
+    private StringBuilder getData(String first) {
+        StringBuilder result = new StringBuilder();
+        return result.append(vertical).append(" ").append(first).append(getLine(" ",length-result.length()+1)).append(vertical);
     }
 
     private void findMaxLength(HashMap<String, String> lines) {
@@ -51,18 +45,15 @@ public class BorderRepresentation {
         length += 2;
     }
 
-    private String generateTopLine() {
-        String result = "";
-        result = result.concat(corner);
-        result = result.concat(getLine(horizontal,length));
-        result = result.concat(corner);
-        return result;
+    private StringBuilder generateTopLine() {
+        StringBuilder result = new StringBuilder();
+        return result.append(corner).append(getLine(horizontal,length)).append(corner);
     }
 
-    private String getLine(String symbol, int size) {
-        String result = "";
+    private StringBuilder getLine(String symbol, int size) {
+        StringBuilder result = new StringBuilder();
         for (int i=0;i<size;i++)
-            result = result.concat(symbol);
+            result.append(symbol);
         return result;
     }
 }

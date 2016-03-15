@@ -15,12 +15,12 @@ public class BorderRepresentationTest {
         lines.put("second", "Hangun, Sangun");
         lines.put("third", "Africa");
         BorderRepresentation border = new BorderRepresentation("+", "-", "|");
-        String alignedInfo = border.generate(lines);
+        StringBuilder alignedInfo = border.generate(lines);
         assertEquals("+----------------+\n" +
                 "| Mr Sathi Wang  |\n" +
                 "|----------------|\n" +
                 "| Hangun, Sangun |\n" +
                 "| Africa         |\n" +
-                "+----------------+", alignedInfo);
+                "+----------------+", alignedInfo.toString());
     }
 }

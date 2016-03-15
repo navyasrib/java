@@ -21,8 +21,8 @@ public class GuestTemplate {
         return allGuestTemplates;
     }
 
-    public List<String> getGuestsWithBorder() {
-        List<String> allGuestTemplates = new ArrayList<>();
+    public List<StringBuilder> getGuestsWithBorder() {
+        List<StringBuilder> allGuestTemplates = new ArrayList<>();
         for(int i=0;i<guests.getAllguests().size();i++)
             allGuestTemplates.add(template.getWithBorder(guests.getAllguests().get(i)));
         return allGuestTemplates;
